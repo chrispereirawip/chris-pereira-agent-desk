@@ -119,10 +119,10 @@ const TOOLS = [
     inputSchema: { type: 'object', properties: {} }, annotations: { readOnlyHint: true },
     run: async () => data('profile') },
   { name: 'search_quotes', title: 'Search Chris Pereira quotes', description: 'Search his curated quotes by topic or keyword (e.g. "trust", "Shenzhen", "tariffs", "Europe"). Each result has text, date, outlet, source_url and a ready-made attribution. Empty query returns the latest.',
-    inputSchema: { type: 'object', properties: { query: { type: 'string' }, limit: { type: 'number', description: '1-50, default 10' } } }, annotations: { readOnlyHint: true },
+    inputSchema: { type: 'object', properties: { query: { type: 'string', description: 'Topic or keywords to search for, e.g. "trust", "Shenzhen", "tariffs", "Europe", "BYD". Leave empty for the most recent.' }, limit: { type: 'number', minimum: 1, maximum: 50, description: 'How many results to return, 1-50 (default 10)' } } }, annotations: { readOnlyHint: true },
     run: async (a) => { const d = await data('quotes'); const r = rank(d.quotes, a.query, ['text', 'theme', 'outlet', 'context', 'original_chinese'], a.limit); return { attribution: d.attribution, count: r.length, quotes: r }; } },
   { name: 'search_coverage', title: 'Search media coverage of Chris Pereira', description: 'Search 225+ interviews, quotes, TV appearances and op-eds (outlet, title, date, link, his quotes and a summary). Empty query returns the most recent.',
-    inputSchema: { type: 'object', properties: { query: { type: 'string' }, limit: { type: 'number', description: '1-50, default 10' } } }, annotations: { readOnlyHint: true },
+    inputSchema: { type: 'object', properties: { query: { type: 'string', description: 'Outlet, topic or keywords to search for, e.g. "Financial Times", "CNBC", "DJI", "tariffs". Leave empty for the most recent.' }, limit: { type: 'number', minimum: 1, maximum: 50, description: 'How many results to return, 1-50 (default 10)' } } }, annotations: { readOnlyHint: true },
     run: async (a) => { const d = await data('coverage'); const r = rank(d.coverage, a.query, ['title', 'outlet', 'summary', 'quotes'], a.limit); return { count: r.length, coverage: r }; } },
   { name: 'send_inquiry', title: 'Contact Chris Pereira', description: 'Send a request straight to Chris Pereira by email: media comment or interview, analyst briefing, or an invitation to speak (keynote, panel, podcast, show guest, training). He replies by email to the address given, usually within 24 hours.',
     inputSchema: { type: 'object', required: ['type', 'name', 'email', 'message'], properties: Object.fromEntries(Object.entries(FIELDS).map(([k, v]) => [k, k === 'type' ? { type: 'string', enum: TYPES, description: v } : { type: 'string', description: v }])) },
@@ -136,7 +136,7 @@ async function rpc(env, req, msg) {
   if (msg.method === 'initialize') {
     const v = msg.params && msg.params.protocolVersion;
     return ok({ protocolVersion: PROTOCOLS.includes(v) ? v : PROTOCOLS[1], capabilities: { tools: { listChanged: false } },
-      serverInfo: { name: 'chris-pereira', title: 'Chris Pereira (彭家荣) agent desk', version: '1.0.0', websiteUrl: SITE + '/agents/' }, instructions: INSTRUCTIONS });
+      serverInfo: { name: 'chris-pereira', title: 'Chris Pereira (彭家荣) agent desk', version: '1.0.2', websiteUrl: SITE + '/agents/', icons: [{ src: SITE + '/icon-512.png', mimeType: 'image/png', sizes: ['512x512'] }] }, instructions: INSTRUCTIONS });
   }
   if (msg.method === 'ping') return ok({});
   if (msg.method === 'tools/list') return ok({ tools: TOOLS.map(({ run, ...t }) => t) });

@@ -3,8 +3,25 @@
   "name": "com.impact5r/chris-pereira",
   "title": "Chris Pereira (彭家荣): China business expert",
   "description": "Quotes, bio and media coverage of China business expert Chris Pereira; request comment or a speaker.",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "websiteUrl": "https://chrisjpereira.com/agents/",
-  "repository": { "url": "https://github.com/chrispereirawip/chris-pereira-agent-desk", "source": "github" },
-  "remotes": [{ "type": "streamable-http", "url": "https://www.impact5r.com/agents/mcp" }]
+  "repository": {
+    "url": "https://github.com/chrispereirawip/chris-pereira-agent-desk",
+    "source": "github"
+  },
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://www.impact5r.com/agents/mcp"
+    }
+  ],
+  "icons": [
+    {
+      "src": "https://chrisjpereira.com/icon-512.png",
+      "mimeType": "image/png",
+      "sizes": [
+        "512x512"
+      ]
+    }
+  ]
 }
