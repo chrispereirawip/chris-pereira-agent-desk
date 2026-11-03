@@ -2,6 +2,8 @@
 
 [![mcptry](https://mcptry.com/badge/com.impact5r/chris-pereira)](https://mcptry.com/servers/com.impact5r/chris-pereira)
 
+[![Chris Pereira (彭家荣): China business expert MCP server](https://mcprush.com/badge/chris-pereira-china-business-expert-mcp/card.svg)](https://mcprush.com/to/chris-pereira-china-business-expert-mcp?ref=badge)
+
 A free, public MCP server and JSON API for AI agents working for **journalists, analysts, producers and event organisers**. It lets an agent find what China business expert Chris Pereira has said, quote him correctly, and reach him for comment, an interview, a briefing or a speaking invitation. No key or sign-in needed.
 
 Chris Pereira is Founder and CEO of iMpact 美讯, former Senior Director of Global Public Affairs at Huawei, author of *Trust* (《信任》, 2026) and *Rebuild* (《新出海》, 2025), a Forbes Top 30 Innovator and a CES Innovation Awards judge, with 20+ years in China. More: [chrisjpereira.com](https://chrisjpereira.com/).
